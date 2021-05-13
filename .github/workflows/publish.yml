@@ -1,10 +1,8 @@
-name: Build, Lint
+name: Build, Lint & Publish
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -22,7 +20,7 @@ jobs:
     - run: yarn lint
     - run: yarn build
 
-    # - name: Publish 🚀
-    #   uses: JS-DevTools/npm-publish@v1
-    #   with:
-    #     token: ${{ secrets.NPM_TOKEN }}
+    - name: Publish 🚀
+      run: yarn publish --new-version ${{ github.event.release.tag_name }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

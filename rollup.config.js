@@ -1,26 +1,28 @@
-import dts from "rollup-plugin-dts";
-import esbuild from "rollup-plugin-esbuild";
-
-const name = require("./package.json").name;
+import dts from 'rollup-plugin-dts'
+import esbuild from 'rollup-plugin-esbuild'
+import packageJson from './package.json'
 
 const bundle = (config) => ({
   ...config,
-  input: "src/index.ts",
-  external: (id) => !/^[./]/.test(id),
-});
+  input: 'src/index.ts',
+  // external: (id) => !/^[./]/.test(id),
+  external: ['vue', '@vue/composition-api'],
+})
 
 export default [
   bundle({
-    plugins: [esbuild()],
+    plugins: [esbuild({
+      target: 'es2015',
+    })],
     output: [
       {
-        file: `dist/${name}.js`,
-        format: "cjs",
+        file: `dist/${packageJson.name}.js`,
+        format: 'cjs',
         sourcemap: true,
       },
       {
-        file: `dist/${name}.mjs`,
-        format: "es",
+        file: `dist/${packageJson.name}.esm.js`,
+        format: 'es',
         sourcemap: true,
       },
     ],
@@ -28,8 +30,8 @@ export default [
   bundle({
     plugins: [dts()],
     output: {
-      file: `dist/${name}.d.ts`,
-      format: "es",
+      file: `dist/${packageJson.name}.d.ts`,
+      format: 'es',
     },
   }),
-];
+]
