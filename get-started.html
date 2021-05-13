@@ -16,7 +16,7 @@
     <meta property="twitter:title" content="Pinia Plugin Persist">
     <meta property="twitter:description" content="Persist pinia state data in sessionStorage or other storages.">
     
-    <link rel="preload" href="/pinia-plugin-persist/assets/css/0.styles.8ae6bed6.css" as="style"><link rel="preload" href="/pinia-plugin-persist/assets/js/app.c562f673.js" as="script"><link rel="preload" href="/pinia-plugin-persist/assets/js/2.e0b7b4d2.js" as="script"><link rel="preload" href="/pinia-plugin-persist/assets/js/13.e22aa71e.js" as="script"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/10.92e7ec46.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/11.65da4e7f.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/12.1655c1cd.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/3.3d510161.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/4.e7c996f5.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/5.6eff8140.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/6.17d5dd20.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/7.c2757c99.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/8.eaa42500.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/9.e8b20584.js">
+    <link rel="preload" href="/pinia-plugin-persist/assets/css/0.styles.8ae6bed6.css" as="style"><link rel="preload" href="/pinia-plugin-persist/assets/js/app.08f8e71f.js" as="script"><link rel="preload" href="/pinia-plugin-persist/assets/js/2.e0b7b4d2.js" as="script"><link rel="preload" href="/pinia-plugin-persist/assets/js/13.aabdecf6.js" as="script"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/10.92e7ec46.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/11.65da4e7f.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/12.1655c1cd.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/3.3d510161.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/4.e7c996f5.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/5.6eff8140.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/6.17d5dd20.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/7.c2757c99.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/8.eaa42500.js"><link rel="prefetch" href="/pinia-plugin-persist/assets/js/9.e8b20584.js">
     <link rel="stylesheet" href="/pinia-plugin-persist/assets/css/0.styles.8ae6bed6.css">
   </head>
   <body>
@@ -40,14 +40,29 @@ pinia<span class="token punctuation">.</span><span class="token function">use</s
   el<span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
   pinia<span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre></div><h3 id="nuxt"><a href="#nuxt" class="header-anchor">#</a> Nuxt</h3> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// nuxt.config.js</span>
+</code></pre></div><h3 id="nuxt"><a href="#nuxt" class="header-anchor">#</a> Nuxt</h3> <p>Create a <code>pinia-plugin-persist.client.ts</code> file, and add your pinia plugin.</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// plugins/pinia-plugin-persist.client.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Context <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nuxt/types'</span>
+<span class="token keyword">import</span> piniaPersist <span class="token keyword">from</span> <span class="token string">'pinia-plugin-persist'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> app <span class="token punctuation">}</span><span class="token operator">:</span> Context<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span>pinia<span class="token operator">?.</span><span class="token function">use</span><span class="token punctuation">(</span>piniaPersist<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>Then add your plugin in your <code>nuxt.config</code> file.</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// nuxt.config.ts</span>
+<span class="token keyword">import</span> colors <span class="token keyword">from</span> <span class="token string">'vuetify/es5/util/colors'</span>
+
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-  buildModules<span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">'pinia/nuxt'</span><span class="token punctuation">,</span>
-    <span class="token string">'pinia-plugin-persist/nuxt'</span><span class="token punctuation">,</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'@/plugins/pinia-plugin-persist.client'</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
+</code></pre></div><h2 id="typescript-definitions"><a href="#typescript-definitions" class="header-anchor">#</a> Typescript definitions</h2> <p>Add the <code>pinia-plugin-persist</code> types definition file to your tsconfig file.</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;compilerOptions&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;types&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">&quot;pinia-plugin-persist&quot;</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
 </code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <script src="/pinia-plugin-persist/assets/js/app.c562f673.js" defer></script><script src="/pinia-plugin-persist/assets/js/2.e0b7b4d2.js" defer></script><script src="/pinia-plugin-persist/assets/js/13.e22aa71e.js" defer></script>
+    <script src="/pinia-plugin-persist/assets/js/app.08f8e71f.js" defer></script><script src="/pinia-plugin-persist/assets/js/2.e0b7b4d2.js" defer></script><script src="/pinia-plugin-persist/assets/js/13.aabdecf6.js" defer></script>
   </body>
 </html>
