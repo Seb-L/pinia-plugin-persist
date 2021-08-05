@@ -46,7 +46,6 @@ export default ({ options, store }: PiniaPluginContext): void => {
 
       if (storageResult) {
         store.$patch(JSON.parse(storageResult))
-        storage.setItem(storeKey, JSON.stringify(store.$state))
         updateStorage(strategy, store)
       }
     })
