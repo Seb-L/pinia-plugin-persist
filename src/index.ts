@@ -94,15 +94,15 @@ export default ({ options, store }: PiniaPluginContext): void => {
                   updateStorage(strategy, store)
                   setTimeout(() => resolve(true), 100)
                 } else {
-                  setTimeout(() => resolve(true), 100)
+                  setTimeout(() => resolve({}), 100)
                 }
               })
               .catch((e) => {
                 setTimeout(() => reject(e), 100)
               })
           : storage.getItem(storeKey)
-          ? resolve(storage.getItem(storeKey))
-          : resolve(true)
+          ? resolve(true)
+          : resolve({})
       })
     })
     watch(
