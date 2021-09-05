@@ -5,6 +5,7 @@ export interface PersistStrategy {
   key?: string;
   storage?: Storage;
   paths?: string[];
+  async?: boolean
 }
 
 export interface PersistOptions {
