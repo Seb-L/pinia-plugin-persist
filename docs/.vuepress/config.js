@@ -34,6 +34,7 @@ module.exports = {
           "/advanced/custom-key.html",
           "/advanced/partial-state.html",
           "/advanced/custom-storage.html",
+          "/advanced/async-storage.html"
         ],
       },
     ],
