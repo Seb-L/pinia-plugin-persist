@@ -1,4 +1,4 @@
-import { watch } from '@vue/composition-api'
+import { watch } from 'vue-demi'
 import { PiniaPluginContext, StateTree, GettersTree } from 'pinia'
 
 export interface PersistStrategy {
