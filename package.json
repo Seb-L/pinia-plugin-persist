@@ -1,6 +1,6 @@
 {
   "name": "pinia-plugin-persist",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Persist pinia state data in sessionStorage or other storages.",
   "main": "dist/pinia-plugin-persist.js",
   "module": "dist/pinia-plugin-persist.esm.js",
