@@ -9,7 +9,7 @@ export interface PersistStrategy {
 
 export interface PersistOptions {
   enabled: true;
-  strategies: PersistStrategy[];
+  strategies?: PersistStrategy[];
 }
 
 type Store = PiniaPluginContext['store'];
@@ -39,7 +39,14 @@ const updateStorage = (strategy: PersistStrategy, store: Store) => {
 
 export default ({ options, store }: PiniaPluginContext): void => {
   if (options.persist?.enabled) {
-    options.persist?.strategies.forEach((strategy) => {
+    const defaultStrat: PersistStrategy[] = [{
+      key: store.$id,
+      storage: sessionStorage,
+    }]
+
+    const strategies = options.persist?.strategies?.length ? options.persist?.strategies : defaultStrat
+
+    strategies.forEach((strategy) => {
       const storage = strategy.storage || sessionStorage
       const storeKey = strategy.key || store.$id
       const storageResult = storage.getItem(storeKey)
@@ -51,7 +58,7 @@ export default ({ options, store }: PiniaPluginContext): void => {
     })
 
     watch(() => store.$state, () => {
-      options.persist?.strategies.forEach((strategy) => {
+      strategies.forEach((strategy) => {
         updateStorage(strategy, store)
       })
     }, { deep: true } )
