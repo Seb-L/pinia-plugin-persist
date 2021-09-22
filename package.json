@@ -2,14 +2,14 @@
   "name": "pinia-plugin-persist",
   "version": "0.0.7",
   "description": "Persist pinia state data in sessionStorage or other storages.",
-  "main": "dist/pinia-plugin-persist.js",
-  "module": "dist/pinia-plugin-persist.esm.js",
-  "types": "dist/pinia-plugin-persist.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/pinia-plugin-persist.js",
-      "import": "./dist/pinia-plugin-persist.esm.js",
-      "module": "./dist/pinia-plugin-persist.esm.js"
+      "require": "./dist/index.js",
+      "import": "./dist/index.esm.js",
+      "module": "./dist/index.esm.js"
     },
     "./package.json": "./package.json"
   },
@@ -61,6 +61,7 @@
     }
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "@sucrase/jest-plugin": "^2.1.0",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.2",
