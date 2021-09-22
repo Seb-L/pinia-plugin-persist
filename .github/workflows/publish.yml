@@ -1,8 +1,9 @@
 name: Build, Lint & Publish
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*.*.*'
 
 jobs:
   build:
@@ -19,11 +20,13 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - run: git config --global user.name "Sebastien Lombard"
     - run: git config --global user.email "sebastien.lombard75@gmail.com"
-    - run: npm version ${{ github.event.release.tag_name }}
+
+    - name: Set env
+      run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
 
     - run: yarn
     - run: yarn lint
     - run: yarn build
-    - run: yarn publish
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    # - run: yarn publish --new-version
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
