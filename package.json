@@ -61,6 +61,7 @@
     }
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "@sucrase/jest-plugin": "^2.1.0",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.2",
