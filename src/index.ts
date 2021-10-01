@@ -17,7 +17,7 @@ type PartialState = Partial<Store['$state']>;
 
 declare module 'pinia' {
   export interface DefineStoreOptionsBase<S extends StateTree, Store> {
-    persist?: PersistOptions
+    persist?: PersistOptions;
   }
 }
 
