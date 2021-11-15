@@ -1,4 +1,4 @@
-import { watch } from '@vue/composition-api'
+import { watch } from 'vue-demi'
 import { PiniaPluginContext, StateTree, GettersTree } from 'pinia'
 
 export interface PersistStrategy {
@@ -10,7 +10,7 @@ export interface PersistStrategy {
 
 export interface PersistOptions {
   enabled: true;
-  strategies: PersistStrategy[];
+  strategies?: PersistStrategy[];
 }
 
 type Store = PiniaPluginContext['store'];
