@@ -80,7 +80,7 @@
     "jest-mock-warn": "^1.1.0",
     "lint-staged": "^11.0.0",
     "pascalcase": "^1.0.0",
-    "pinia": "^0.4.1",
+    "pinia": "^2.0.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.47.0",
     "rollup-plugin-dts": "^3.0.1",
