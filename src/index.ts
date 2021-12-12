@@ -1,5 +1,5 @@
 import { watch } from 'vue-demi'
-import { PiniaPluginContext, StateTree, GettersTree } from 'pinia'
+import { PiniaPluginContext } from 'pinia'
 
 export interface PersistStrategy {
   key?: string;
@@ -16,7 +16,7 @@ type Store = PiniaPluginContext['store'];
 type PartialState = Partial<Store['$state']>;
 
 declare module 'pinia' {
-  export interface DefineStoreOptions<Id extends string, S extends StateTree, G extends GettersTree<S>, A> {
+  export interface DefineStoreOptionsBase< S, Store> {
     persist?: PersistOptions;
   }
 }
