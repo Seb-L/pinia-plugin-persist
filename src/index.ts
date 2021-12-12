@@ -1,25 +1,6 @@
 import { watch } from 'vue-demi'
 import { PiniaPluginContext } from 'pinia'
-
-export interface PersistStrategy {
-  key?: string;
-  storage?: Storage;
-  paths?: string[];
-}
-
-export interface PersistOptions {
-  enabled: true;
-  strategies?: PersistStrategy[];
-}
-
-type Store = PiniaPluginContext['store'];
-type PartialState = Partial<Store['$state']>;
-
-declare module 'pinia' {
-  export interface DefineStoreOptionsBase< S, Store> {
-    persist?: PersistOptions;
-  }
-}
+import { PersistStrategy, Store, PartialState } from '../types'
 
 const updateStorage = (strategy: PersistStrategy, store: Store) => {
   const storage = strategy.storage || sessionStorage
@@ -61,6 +42,6 @@ export default ({ options, store }: PiniaPluginContext): void => {
       strategies.forEach((strategy) => {
         updateStorage(strategy, store)
       })
-    }, { deep: true } )
+    }, { deep: true })
   }
 }
