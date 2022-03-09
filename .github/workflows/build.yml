@@ -1,0 +1,24 @@
+name: Build, Lint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2
+
+    - name: Install lint and Build 🔧
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+    - run: yarn
+    - run: yarn lint
+    - run: yarn build
+

@@ -1,0 +1,27 @@
+name: Docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2
+
+    - name: Install and Build 🔧
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16.x'
+    - run: yarn
+    - run: yarn docs:build
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.1.3
+      with:
+        branch: gh-pages
+        folder: docs/.vitepress/dist
