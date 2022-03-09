@@ -1,0 +1,62 @@
+{
+  "name": "pinia-plugin-persist",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Seb-L/pinia-plugin-persist.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "lint": "eslint . --ext .ts",
+    "unit:run": "vitest run --coverage",
+    "unit:watch": "vitest watch",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs"
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
+  "main": "./dist/pinia-persist.umd.js",
+  "module": "./dist/pinia-persist.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/pinia-persist.es.js",
+      "require": "./dist/pinia-persist.umd.js"
+    }
+  },
+  "types": "./dist",
+  "devDependencies": {
+    "@babel/types": "^7.17.0",
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "c8": "^7.11.0",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "happy-dom": "^2.46.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4",
+    "vite": "^2.8.0",
+    "vitepress": "^0.22.3",
+    "vitest": "^0.6.0",
+    "vue": "^3.2.31",
+    "pinia": "^2.0.0"
+  },
+  "dependencies": {
+    "vue-demi": "^0.12.1"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0",
+    "pinia": "^2.0.0",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  }
+}

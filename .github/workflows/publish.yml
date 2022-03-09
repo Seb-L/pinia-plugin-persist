@@ -1,0 +1,37 @@
+name: Publish Package to npmjs
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure Git
+        run: |
+          git config user.email "sebastien.lombard75@gmail.com"
+          git config user.name "Seb-L"
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org/'
+          # Defaults to the user or organization that owns the workflow file
+
+      - id: get-version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
+
+      - name: ⏳ Install dependencies
+        run: yarn
+
+      - name: 👷  Build lib
+        run: yarn build
+
+      - name: 📦 Publish
+        run: yarn publish --new-version ${{ steps.get-version.outputs.VERSION }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
