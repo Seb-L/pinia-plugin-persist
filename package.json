@@ -1,6 +1,6 @@
 {
   "name": "pinia-plugin-persist",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Seb-L/pinia-plugin-persist.git"
@@ -38,13 +38,13 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "happy-dom": "^2.46.0",
+    "pinia": "^2.0.0",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4",
     "vite": "^2.8.0",
     "vitepress": "^0.22.3",
     "vitest": "^0.6.0",
-    "vue": "^3.2.31",
-    "pinia": "^2.0.0"
+    "vue": "^3.2.31"
   },
   "dependencies": {
     "vue-demi": "^0.12.1"

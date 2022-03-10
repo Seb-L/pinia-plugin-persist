@@ -22,6 +22,7 @@ Vue.use(vueCompositionApi)
 Vue.use(pinia)
 
 new Vue({
+  pinia,
   render: h => h(App),
 }).$mount('#app')
 ```
