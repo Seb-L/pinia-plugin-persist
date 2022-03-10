@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as t}from"./app.61960c33.js";const _='{"title":"Custom storage","description":"","frontmatter":{},"headers":[],"relativePath":"advanced/custom-storage.md"}',o={},p=t("",5),e=[p];function c(u,k,l,r,i,d){return a(),s("div",null,e)}var m=n(o,[["render",c]]);export{_ as __pageData,m as default};

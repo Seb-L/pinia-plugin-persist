@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,a as t}from"./app.61960c33.js";const g='{"title":"Custom storage key","description":"","frontmatter":{},"headers":[],"relativePath":"advanced/custom-key.md"}',e={},o=t("",4),p=[o];function c(r,u,l,k,i,d){return a(),n("div",null,p)}var x=s(e,[["render",c]]);export{g as __pageData,x as default};
