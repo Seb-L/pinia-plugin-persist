@@ -36,14 +36,21 @@ export const updateStorage = (strategy: PersistStrategy, store: Store) => {
   }
 }
 
+function _initial(strategies: PersistStrategy[], store: Store) {
+  strategies.forEach((strategy) => {
+    updateStorage(strategy, store)
+  })
+}
+
 export default ({ options, store }: PiniaPluginContext): void => {
   if (options.persist?.enabled) {
+    let mounted: boolean = true
     const defaultStrat: PersistStrategy[] = [{
       key: store.$id,
       storage: sessionStorage,
     }]
 
-    const strategies = options.persist?.strategies?.length ? options.persist?.strategies : defaultStrat
+    const strategies: PersistStrategy[] = options.persist?.strategies?.length ? options.persist?.strategies : defaultStrat
 
     strategies.forEach((strategy) => {
       const storage = strategy.storage || sessionStorage
@@ -56,10 +63,13 @@ export default ({ options, store }: PiniaPluginContext): void => {
       }
     })
 
+    if (mounted) {
+      _initial(strategies, store)
+      mounted = false
+    }
+
     store.$subscribe(() => {
-      strategies.forEach((strategy) => {
-        updateStorage(strategy, store)
-      })
+      _initial(strategies, store)
     })
   }
 }
