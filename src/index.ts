@@ -1,5 +1,6 @@
-import { PiniaPluginContext } from 'pinia'
 
+import { PiniaPluginContext } from 'pinia'
+import nextTick from 'vue'
 export interface PersistStrategy {
   key?: string;
   storage?: Storage;
@@ -36,7 +37,7 @@ export const updateStorage = (strategy: PersistStrategy, store: Store) => {
   }
 }
 
-export default ({ options, store }: PiniaPluginContext): void => {
+export default async ({ options, store }: PiniaPluginContext): Promise<void> => {
   if (options.persist?.enabled) {
     const defaultStrat: PersistStrategy[] = [{
       key: store.$id,
@@ -55,7 +56,7 @@ export default ({ options, store }: PiniaPluginContext): void => {
         updateStorage(strategy, store)
       }
     })
-
+    await nextTick()
     store.$subscribe(() => {
       strategies.forEach((strategy) => {
         updateStorage(strategy, store)
