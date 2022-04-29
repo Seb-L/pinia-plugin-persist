@@ -8,6 +8,7 @@ export interface PersistStrategy {
 
 export interface PersistOptions {
   enabled: true;
+  detached? : true;
   strategies?: PersistStrategy[];
 }
 
@@ -60,6 +61,6 @@ export default ({ options, store }: PiniaPluginContext): void => {
       strategies.forEach((strategy) => {
         updateStorage(strategy, store)
       })
-    })
+    },{ detached: options.persist?.detached ? true : false })
   }
 }
