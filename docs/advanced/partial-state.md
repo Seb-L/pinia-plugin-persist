@@ -1,6 +1,6 @@
 # Persist partial state
 
-By default the whole state is persisted, but you can specify the state keys you want ot persist, by setting the `paths` key in each strategy.
+By default the whole state is persisted, but you can specify the state keys you want to persist, by setting the `paths` key in each strategy.
 
 In this example we persist the `firstName` and `lastName` in the sessionStorage, and the `accessToken` in the localStorage.
 
