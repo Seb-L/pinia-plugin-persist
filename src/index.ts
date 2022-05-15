@@ -38,12 +38,10 @@ export const updateStorage = (strategy: PersistStrategy, store: Store) => {
 
 export default ({ options, store }: PiniaPluginContext): void => {
   if (options.persist?.enabled) {
-    const defaultStrat: PersistStrategy[] = [{
-      key: store.$id,
-      storage: sessionStorage,
-    }]
 
-    const strategies = options.persist?.strategies?.length ? options.persist?.strategies : defaultStrat
+    const strategies = options.persist?.strategies?.length
+      ? options.persist?.strategies
+      : [{ key: store.$id, storage: sessionStorage }]
 
     strategies.forEach((strategy) => {
       const storage = strategy.storage || sessionStorage
