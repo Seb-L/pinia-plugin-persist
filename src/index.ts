@@ -7,7 +7,7 @@ export interface PersistStrategy {
 }
 
 export interface PersistOptions {
-  enabled: true;
+  enabled: boolean;
   strategies?: PersistStrategy[];
 }
 
