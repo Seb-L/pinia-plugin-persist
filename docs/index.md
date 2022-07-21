@@ -42,7 +42,7 @@ createApp({})
   .mount('#app')
 ```
 
-### Nuxt
+### Nuxt 2
 
 Create a `pinia-plugin-persist.client.ts` file, and add your pinia plugin.
 
@@ -66,6 +66,22 @@ export default {
   ],
 }
 ```
+
+### Nuxt 3
+
+
+Create a `pinia-plugin-persist.client.ts` file, and add your pinia plugin.
+
+```typescript
+// plugins/pinia-plugin-persist.client.ts
+import piniaPersist from 'pinia-plugin-persist'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.$pinia?.use(piniaPersist)
+})
+```
+
+Done!
 
 ## Typescript definitions
 
