@@ -26,6 +26,7 @@
       "require": "./dist/pinia-persist.umd.js"
     }
   },
+  "type": "module",
   "types": "./dist",
   "devDependencies": {
     "@babel/types": "^7.17.0",
