@@ -6,7 +6,7 @@
 
 ## Setup
 
-### Vue2
+### Vue3
 
 ```typescript
 import Vue from 'vue'
@@ -27,7 +27,7 @@ new Vue({
 }).$mount('#app')
 ```
 
-### Vue3
+### Vue2
 
 ```typescript
 import { createApp } from 'vue'
