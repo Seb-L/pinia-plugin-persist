@@ -48,12 +48,11 @@ Create a `pinia-plugin-persist.client.ts` file, and add your pinia plugin.
 
 ```typescript
 // plugins/pinia-plugin-persist.client.ts
-import { Context } from '@nuxt/types'
 import piniaPersist from 'pinia-plugin-persist'
 
-export default ({ app }: Context) => {
-  app.pinia?.use(piniaPersist)
-}
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.$nuxt.$pinia.use(piniaPersist)
+})
 ```
 
 Then add your plugin in your `nuxt.config.ts` file.
