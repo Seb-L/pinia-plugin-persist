@@ -54,6 +54,12 @@ export default ({ options, store }: PiniaPluginContext): void => {
         store.$patch(JSON.parse(storageResult))
         updateStorage(strategy, store)
       }
+      window.addEventListener('storage', (event) => {
+        if(event.key === storeKey) {
+          const newState = JSON.parse(event.newValue)
+          store.$patch(newState);
+        }
+      })
     })
 
     store.$subscribe(() => {
